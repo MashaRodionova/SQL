@@ -2,6 +2,9 @@ package ru.netology.sql.data;
 
 
 import com.github.javafaker.Faker;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
 import java.util.Locale;
@@ -24,7 +27,9 @@ public class DataHelper {
 
 
 
-    @Value
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class AuthInfo {
         private int id;
         private String login;
@@ -34,7 +39,9 @@ public class DataHelper {
 
     }
 
-    @Value
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class VerificationInfo {
         private String code;
         private int userId;
