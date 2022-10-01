@@ -23,7 +23,7 @@ public class SQLHelper {
     @SneakyThrows
     public static DataHelper.AuthInfo getAuthInfo() {
 
-        var dataSQL = "SELECT * FROM users";
+        var dataSQL = "SELECT * FROM users ORDER BY id";
         try (var conn = getConn()) {
             var result = runner.query(getConn(), dataSQL, new BeanListHandler<>(DataHelper.AuthInfo.class));
             return new DataHelper.AuthInfo(result.get(0).getId(), result.get(0).getLogin(), result.get(0).getPassword(), result.get(0).getStatus());

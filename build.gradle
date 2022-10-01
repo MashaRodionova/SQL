@@ -27,7 +27,7 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
     testImplementation 'com.codeborne:selenide:5.19.0'
     testImplementation 'com.github.javafaker:javafaker:1.0.1'
-    implementation 'mysql:mysql-connector-java:5.1.6'
+    implementation 'mysql:mysql-connector-java:8.0.30'
 }
 
 test {
