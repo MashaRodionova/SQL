@@ -15,12 +15,12 @@ public class DataHelper {
     }
     private static Faker faker = new Faker(Locale.forLanguageTag("ru"));
     public static AuthInfo generateFakerAuthInfo() {
-        return new AuthInfo(faker.number().randomDigit(), faker.name().username(), faker.internet().password(), "ohMyGod");
+        return new AuthInfo(Integer.toString(faker.number().randomDigit()), faker.name().username(), faker.internet().password(), "ohMyGod");
     }
 
 
     public static VerificationInfo generateFakerCode(AuthInfo authInfo) {
-        return new VerificationInfo(Integer.toString(faker.number().randomDigit()), faker.number().randomDigit());
+        return new VerificationInfo(Integer.toString(faker.number().randomDigit()), Integer.toString(faker.number().randomDigit()));
     }
 
 
@@ -31,7 +31,7 @@ public class DataHelper {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class AuthInfo {
-        private int id;
+        private String id;
         private String login;
         private String password;
         private String status;
@@ -44,7 +44,7 @@ public class DataHelper {
     @NoArgsConstructor
     public static class VerificationInfo {
         private String code;
-        private int userId;
+        private String userId;
     }
 
 }
