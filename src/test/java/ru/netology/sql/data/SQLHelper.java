@@ -20,26 +20,14 @@ public class SQLHelper {
         );
     }
 
-    @SneakyThrows
-    public static DataHelper.AuthInfo getAuthInfo() {
-
-        var dataSQL = "SELECT * FROM users ORDER BY id";
-        try (var conn = getConn()) {
-            var result = runner.query(getConn(), dataSQL, new BeanListHandler<>(DataHelper.AuthInfo.class));
-            return new DataHelper.AuthInfo(result.get(0).getId(), result.get(0).getLogin(), result.get(0).getPassword(), result.get(0).getStatus());
-        } catch (SQLException exception) {
-            exception.printStackTrace();
-        }
-        return null;
-    }
 
     @SneakyThrows
     public static DataHelper.VerificationInfo getVerificationCode() {
 
-        var dataSQL = "SELECT * FROM auth_codes ORDER BY created DESC";
+        var dataSQL = "SELECT code FROM auth_codes ORDER BY created DESC";
         try (var conn = getConn()) {
             var result = runner.query(getConn(), dataSQL, new BeanListHandler<>(DataHelper.VerificationInfo.class));
-            return new DataHelper.VerificationInfo(result.get(0).getCode(), result.get(0).getUserId());
+            return new DataHelper.VerificationInfo(result.get(0).getCode());
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
