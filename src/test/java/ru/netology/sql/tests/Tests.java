@@ -1,6 +1,7 @@
 package ru.netology.sql.tests;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.sql.data.DataHelper;
@@ -17,6 +18,11 @@ public class Tests {
     void setup() {
         open("http://localhost:9999");
         Configuration.holdBrowserOpen = true;
+    }
+
+    @AfterAll
+    static void dropData() {
+        SQLHelper.cleanDataBase();
     }
 
     @Test
